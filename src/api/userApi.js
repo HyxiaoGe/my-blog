@@ -22,10 +22,10 @@ export async function login(userData) {
   }
 }
 
-// 获取用户个人信息和发布的博客列表
-export async function getUserProfile(userId) {
+// 获取用户个人信息
+export async function getUserInfo() {
   try {
-    const response = await instance.get(`/user/profile/${userId}`);
+    const response = await instance.get(`/user/me`);
     return response;
   } catch (error) {
     console.error('获取用户信息失败：', error);
@@ -37,5 +37,5 @@ export async function getUserProfile(userId) {
 export default {
   register,
   login,
-  getUserProfile,
+  getUserInfo,
 };

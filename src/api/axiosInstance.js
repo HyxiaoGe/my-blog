@@ -10,6 +10,10 @@ const instance = axios.create({
 instance.interceptors.request.use(
   config => {
     // 在请求发送前做一些处理，例如添加请求头、loading效果等
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers['Authorization'] = 'Bearer ' + token;
+    }
     return config;
   },
   error => {

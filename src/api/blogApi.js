@@ -25,7 +25,7 @@ export async function deleteBlog(id) {
   return instance.delete(`/user/delete-blog/${id}`);
 }
 
-// 给博客点赞  11
+// 给博客点赞
 export async function likeBlog(id) {
   return instance.post(`/user/like/${id}`);
 }

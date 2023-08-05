@@ -1,7 +1,9 @@
 <script setup>
 import {ref, onMounted} from 'vue'
 import { getBlogs } from '../api/blogApi';
+import useTitle from '../hooks/useTitle'
 
+useTitle('首页')
 // 获取博客列表
 const blogList = ref([])
 onMounted(async () => {

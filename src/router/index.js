@@ -24,10 +24,10 @@ const router = createRouter({
     },
     { path: '/blog/:id', component: BlogDetailView },
     { path: '/blog/:id/edit', component: CreateEditBlogView },
-    { path: '/create', component: CreateEditBlogView },
+    { path: '/create-edit-blog', component: CreateEditBlogView },
     { path: '/login', component: LoginView },
     { path: '/register', component: RegisterView },
-    { path: '/myblogs', component: MyBlogsView}
+    { path: '/my-blogs', component: MyBlogsView}
   ]
 })
 
