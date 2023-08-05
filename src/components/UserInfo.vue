@@ -23,6 +23,7 @@ function handleLogout() {
   clearUserInfo();
   localStorage.removeItem('token');
   router.push('/login');
+  // test
 }
 </script>
 
