@@ -1,20 +1,44 @@
 <script setup>
-import {ref, onMounted} from 'vue'
-import { getBlogs } from '../api/blogApi';
+import { ref, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
+import { getBlogs } from '../api/blogApi'
 import useTitle from '../hooks/useTitle'
+import BlogCard from '../components/BlogCard.vue'
 
 useTitle('首页')
-// 获取博客列表
-const blogList = ref([])
-onMounted(async () => {
-  const res = await getBlogs()
-  blogList.value = res.data
-  console.log("blogList", blogList.value)
+
+// 获取路由对象
+const $route = useRoute()
+
+// 定义 list total
+const list = ref([])
+const total = ref(0)
+
+// 使用 watchEffect 监听 url 参数 page pageSize category keyword 变化，并获取博客列表和总数
+watchEffect(async () => {
+  const query = $route.query
+  const page = parseInt(query.page) || 1
+  const pageSize = parseInt(query.pageSize) || 10
+  const category = query.category
+  const keyword = query.keyword
+  const res = await getBlogs(page, pageSize, category, keyword)
+  list.value = res.list
+  total.value = res.total
 })
 </script>
 
 <template>
   <main>
     <h1>Home</h1>
+    <div class="blog-container" v-for="item in list" :key="item.id">
+      <BlogCard :blog="item" />
+    </div>
   </main>
 </template>
+
+<style scoped>
+.blog-container {
+  margin-bottom: 20px;
+  border: 1px solid #f5f5f5;
+}
+</style>
