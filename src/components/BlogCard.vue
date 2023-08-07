@@ -1,6 +1,7 @@
 <script>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { formatDate } from '../utils/date'
 
 export default {
   props: {
@@ -20,12 +21,6 @@ export default {
     const { author, category, updatedAt, title, summary, description, likes, favorites, comments } =
       blog.value
 
-    // 格式化时间为"YYYY-MM-DD"格式
-    function formatTime(time) {
-      const date = new Date(time)
-      return date.toISOString().slice(0, 10)
-    }
-
     return {
       author,
       category,
@@ -37,7 +32,7 @@ export default {
       favorites,
       comments,
       handleClick,
-      formatTime
+      formatDate
     }
   }
 }
@@ -53,7 +48,7 @@ export default {
         </div>
         <div class="category-time">
           <i class="el-icon-folder"></i> {{ category }} &nbsp;&nbsp;&nbsp;
-          <i class="el-icon-time"></i> {{ formatTime(updatedAt) }}
+          <i class="el-icon-time"></i> {{ formatDate(updatedAt) }}
         </div>
       </div>
     </div>
