@@ -1,9 +1,18 @@
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, isRef, onMounted, onBeforeUnmount, watchEffect } from 'vue';
 
 const NAME = 'TechBlog'
 
 function useTitle(title) {
     const originalTitle = ref(document.title);
+
+    if (isRef(title)) {
+        console.log(title);
+        watchEffect(() => {
+            if (title.value) {
+                document.title = title.value  + '-'  + NAME;
+            }
+        });
+    }
 
     // 更新网页标题
     const updateTitle = () => {

@@ -24,27 +24,27 @@ export async function editBlog(id, blogData) {
 
 // 删除博客
 export async function deleteBlog(id) {
-  return instance.delete(`/user/delete-blog/${id}`);
+  return instance.delete(`/blog/${id}`);
 }
 
 // 给博客点赞
 export async function likeBlog(id) {
-  return instance.post(`/user/like/${id}`);
+  return instance.post(`/blog/${id}/like`);
 }
 
 // 取消博客点赞
 export async function unlikeBlog(id) {
-  return instance.delete(`/user/unlike/${id}`);
+  return instance.delete(`/blog/${id}/unlike`);
 }
 
 // 收藏博客
 export async function favoriteBlog(id) {
-  return instance.post(`/user/favorite/${id}`);
+  return instance.post(`/blog/${id}/favorite`);
 }
 
 // 取消收藏博客
 export async function unfavoriteBlog(id) {
-  return instance.delete(`/user/unfavorite/${id}`);
+  return instance.delete(`/blog/${id}/unfavorite`);
 }
 
 // 搜索博客
