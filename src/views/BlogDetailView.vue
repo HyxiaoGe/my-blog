@@ -69,12 +69,11 @@ const handleFavorite = async () => {
       <span class="blog-detail-date">{{ formatDate(blogInfo.createdAt) }}</span>
     </div>
 
-    <div class="blog-detail-content">
-      {{ blogInfo.content || '暂无内容' }}
-    </div>
-
-    <!-- <div class="blog-detail-content"   v-html="md.render(toRaw(blogInfo.content)) || ''"> -->
-    <!-- </div> -->
+    <div
+      v-if="blogInfo.content"
+      class="blog-detail-content"
+      v-html="md.render(toRaw(blogInfo.content)) || ''"
+    ></div>
 
     <!-- 生成一个div， 用于点赞和收藏， 水平居中显示 -->
     <div style="text-align: center; margin-top: 20px">

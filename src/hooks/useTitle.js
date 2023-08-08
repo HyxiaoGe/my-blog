@@ -6,7 +6,6 @@ function useTitle(title) {
     const originalTitle = ref(document.title);
 
     if (isRef(title)) {
-        console.log(title);
         watchEffect(() => {
             if (title.value) {
                 document.title = title.value  + '-'  + NAME;
