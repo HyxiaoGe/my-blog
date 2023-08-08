@@ -6,6 +6,7 @@ import { getBlogById, likeBlog, unlikeBlog, favoriteBlog, unfavoriteBlog } from 
 import useTitle from '../hooks/useTitle'
 import { formatDate } from '../utils/date'
 import { Pointer, Star } from '@element-plus/icons-vue'
+import CommentView from './sub-views/CommentView.vue'
 
 const md = new MarkdownIt()
 
@@ -94,6 +95,7 @@ const handleFavorite = async () => {
         >{{ blogInfo.favorites }}</el-button
       >
     </div>
+    <CommentView :blogId = blogInfo.id />
   </div>
 </template>
 
