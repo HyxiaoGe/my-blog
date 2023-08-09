@@ -1,9 +1,11 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { ElMessageBox } from 'element-plus'
 import useTitle from '../hooks/useTitle'
 import useNavToLogin from '../hooks/useNavToLogin'
 import useGetBlogList from '../hooks/useGetBlogList'
 import ListPage from '../components/ListPage.vue'
+import { deleteBlog } from '../api/blogApi'
 
 const $router = useRouter()
 
@@ -11,15 +13,37 @@ useNavToLogin() //未登录时跳转到登录页
 
 useTitle('我的博客')
 
-const { list, total, currentPage, pageSizeRef } = useGetBlogList({ my: true })
+const { list, total, currentPage, pageSizeRef, getBlogListFn } = useGetBlogList({ my: true })
 
 // 编辑博客，跳转到博客编辑页
 function handleEdit(row) {
   $router.push(`/blog/${row.id}/edit`)
 }
+
+//  删除博客
+async function handleDelete(row) {
+  const { id, title } = row
+  const confirm = await ElMessageBox.confirm(`确定要删除博客《${title}》吗？`, '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).catch(() => {})
+  if (confirm === 'confirm') {
+    await deleteBlog(id)
+    await getBlogListFn()
+    ElMessageBox.message.success('删除成功')
+  }
+}
 </script>
 
 <template>
+  <div class="title-container">
+    <h2>我的博客</h2>
+    <router-link to="/blog/create">
+      <el-button type="primary" size="small">新建博客</el-button>
+    </router-link>
+  </div>
+
   <!-- 用table 显示博客列表，包括 title category likes favorites comments createdAt，再加两个操作按钮“编辑” “删除” -->
   <el-table :data="list" border style="width: 100%">
     <!-- 标题列，点击标题链接到博客详情页 -->
@@ -44,6 +68,14 @@ function handleEdit(row) {
 </template>
 
 <style scoped>
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
 .el-table {
   margin-bottom: 20px;
 }

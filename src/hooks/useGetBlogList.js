@@ -13,8 +13,7 @@ function useGetBlogList(opt = {}) {
   const currentPage = ref(1)
   const pageSizeRef = ref(10)
 
-  // 使用 watchEffect 监听 url 参数 page pageSize category keyword 变化，并获取博客列表和总数
-  watchEffect(async () => {
+  const getBlogListFn = async () => {
     currentPage.value = +$route.query.page || 1
     pageSizeRef.value = +$route.query.pageSize || 10
 
@@ -29,25 +28,17 @@ function useGetBlogList(opt = {}) {
     const { list: blogList, total: blogTotal } = await getBlogs(queryInfo)
     list.value = blogList
     total.value = blogTotal
+  }
 
-    // const query = $route.query
-    // currentPage.value = parseInt(query.page) || 1
-    // const page = parseInt(query.page) || 1
-    // pageSizeRef.value = parseInt(query.pageSize) || 10
-
-    // const pageSize = parseInt(query.pageSize) || 10
-    // const category = query.category
-    // const keyword = query.keyword
-    // const res = await getBlogs(page, pageSize, category, keyword, my)
-    // list.value = res.list
-    // total.value = res.total
-  })
+  // 使用 watchEffect 监听 url 参数 page pageSize category keyword 变化，并获取博客列表和总数
+  watchEffect(getBlogListFn)
 
   return {
     list,
     total,
     currentPage,
-    pageSizeRef
+    pageSizeRef,
+    getBlogListFn
   }
 }
 

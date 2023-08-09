@@ -19,7 +19,7 @@ export async function createBlog(blogData) {
 
 // 编辑博客
 export async function editBlog(id, blogData) {
-  return instance.post(`/user/edit-blog/${id}`, blogData);
+  return instance.put(`/user/edit-blog/${id}`, blogData);
 }
 
 // 删除博客

@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { useUserStore } from '../stores/user'
 
 const { userInfo, clearUserInfo } = useUserStore()
@@ -9,7 +9,7 @@ const router = useRouter()
 
 // 处理创建博客跳转
 function handleCreateBlog() {
-  router.push('/create-edit-blog')
+  router.push('/blog/create')
 }
 
 // 处理我的博客跳转
