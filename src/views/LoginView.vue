@@ -46,6 +46,12 @@ const formRules = {
 // 处理登录逻辑
 function handleLogin(formEl) {
     formEl.validate(async (valid) => {
+
+      if (!valid) {
+        console.log('表单校验不通过');
+        return false;
+      }
+
     if (valid) {
       // 表单校验通过，执行登录逻辑
         const { token } = await login(formData);
