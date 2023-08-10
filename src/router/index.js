@@ -12,39 +12,30 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
     },
     {
       path: '/blog/:id',
-      // component: BlogDetailView
       component: () => import('../views/BlogDetailView.vue')
     },
     {
       path: '/blog/:id/edit',
-      // component: CreateEditBlogView
       component: () => import('../views/CreateEditBlogView.vue')
     },
     {
       path: '/blog/create',
-      // component: CreateEditBlogView
       component: () => import('../views/CreateEditBlogView.vue')
     },
     {
       path: '/login',
-      // component: LoginView
       component: () => import('../views/LoginView.vue')
     },
     {
       path: '/register',
-      // component: RegisterView
       component: () => import('../views/RegisterView.vue')
     },
     {
       path: '/my-blogs',
-      // component: MyBlogsView
       component: () => import('../views/MyBlogsView.vue')
     }
   ]

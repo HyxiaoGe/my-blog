@@ -56,6 +56,5 @@ function handleLogout() {
         </template>
       </el-dropdown>
     </div>
-    <!-- <RouterLink v-else to="/login">登录</RouterLink> -->
   </div>
 </template>
