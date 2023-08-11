@@ -23,7 +23,7 @@ getUserInfo().then(res => {
     <div class="top-navbar">
       <div class="left-section">
         <div class="logo">
-          <RouterLink to="/"><h1>TechBlog</h1></RouterLink>
+          <RouterLink to="/"><h1>HyxiaoBlog</h1></RouterLink>
         </div>
         <NavMenu class="nav-menu"/>
         <SearchInput />

@@ -1,6 +1,6 @@
 import { ref, isRef, onMounted, onBeforeUnmount, watchEffect } from 'vue';
 
-const NAME = 'TechBlog'
+const NAME = 'HyxiaoBlog'
 
 function useTitle(title) {
     const originalTitle = ref(document.title);
