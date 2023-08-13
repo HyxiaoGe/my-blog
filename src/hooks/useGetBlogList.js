@@ -2,13 +2,12 @@ import { ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import { getBlogs } from '../api/blogApi'
 
-function useGetBlogList(opt = {}) {
-  const { my } = opt
+function useGetBlogList() {
   // 获取路由对象
   const $route = useRoute()
 
   // 定义 list total
-  const list = ref([])
+  const rows = ref([])
   const total = ref(0)
   const currentPage = ref(1)
   const pageSizeRef = ref(10)
@@ -21,12 +20,11 @@ function useGetBlogList(opt = {}) {
       page: +$route.query.page || 1,
       pageSize: +$route.query.pageSize || 10,
       category: $route.query.category || '',
-      keyword: $route.query.keyword || '',
-      my
+      keyword: $route.query.keyword || ''
     }
 
-    const { list: blogList, total: blogTotal } = await getBlogs(queryInfo)
-    list.value = blogList
+    const { rows: blogList, total: blogTotal } = await getBlogs(queryInfo)
+    rows.value = blogList
     total.value = blogTotal
   }
 
@@ -34,7 +32,7 @@ function useGetBlogList(opt = {}) {
   watchEffect(getBlogListFn)
 
   return {
-    list,
+    rows,
     total,
     currentPage,
     pageSizeRef,

@@ -3,7 +3,7 @@ import { ref, defineProps, watch, toRef } from 'vue'
 import { ElMessageBox } from 'element-plus'
 import { getComments, createComment, deleteComment } from '@/api/commentApi'
 import { formatDate } from '../../utils/date'
-import { useUserStore } from '@/stores/user'
+// import { useUserStore } from '@/stores/user'
 
 const props = defineProps({
   blogId: {
@@ -12,7 +12,7 @@ const props = defineProps({
   }
 })
 
-const { userInfo } = useUserStore()
+// const { userInfo } = useUserStore()
 
 // 使用 ref 创建一个响应式变量，用于存储已加载的博客ID
 const loadedBlogId = ref(null)
@@ -78,8 +78,8 @@ const handleDeleteComment = async (blogId, commentId) => {
           &nbsp;&nbsp;
           <span class="time">{{ formatDate(comment.createdAt) }}</span>
         </div>
-        <div class="comment-item-header-right">
-          <!-- 如果 comment.authorNickname 等于 userInfo.username ，则显示一个删除按钮 -->
+        <!-- <div class="comment-item-header-right">
+          如果 comment.authorNickname 等于 userInfo.username ，则显示一个删除按钮
           <el-button
             v-if="comment.authorUsername === userInfo.username"
             type="text"
@@ -87,8 +87,8 @@ const handleDeleteComment = async (blogId, commentId) => {
             icon="el-icon-delete"
             @click="handleDeleteComment(blogId, comment.id)"
             >删除</el-button
-          >
-        </div>
+          > -->
+        <!-- </div> -->
       </div>
       <div class="comment-item-content">
         <div class="comment-item-content-text" v-html="comment.content"></div>

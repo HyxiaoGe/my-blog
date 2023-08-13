@@ -3,15 +3,15 @@ import { RouterLink, RouterView } from 'vue-router'
 import NavMenu from './components/NavMenu.vue';
 import SearchInput from './components/SearchInput.vue';
 import UserInfo from './components/UserInfo.vue';
-import { getUserInfo } from './api/userApi';
-import { useUserStore } from './stores/user';
+// import { getUserInfo } from './api/userApi';
+// import { useUserStore } from './stores/user';
 
-const { setUserInfo } = useUserStore();
+// const { setUserInfo } = useUserStore();
 
 // 获取用户信息
-getUserInfo().then(res => {
-  setUserInfo(res);
-});
+// getUserInfo().then(res => {
+//   setUserInfo(res);
+// });
 </script>
 
 <template>
@@ -28,9 +28,9 @@ getUserInfo().then(res => {
         <NavMenu class="nav-menu"/>
         <SearchInput />
       </div>
-      <div class="right-section">
+      <!-- <div class="right-section">
         <UserInfo />
-      </div>
+      </div> -->
     </div>
 
   </div>

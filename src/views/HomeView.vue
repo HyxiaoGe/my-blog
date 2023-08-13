@@ -6,12 +6,12 @@ import ListPage from '../components/ListPage.vue'
 
 useTitle('首页')
 
-const { list, total, currentPage, pageSizeRef } = useGetBlogList()
+const { rows, total, currentPage, pageSizeRef } = useGetBlogList()
 </script>
 
 <template>
   <main>
-    <div class="blog-container" v-for="item in list" :key="item.id">
+    <div class="blog-container" v-for="item in rows" :key="item.id">
       <BlogCard :blog="item" />
     </div>
     <ListPage :total="total" :currentPage="currentPage" :pageSizeRef="pageSizeRef" />

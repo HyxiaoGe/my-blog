@@ -13,7 +13,7 @@ useNavToLogin() //未登录时跳转到登录页
 
 useTitle('我的博客')
 
-const { list, total, currentPage, pageSizeRef, getBlogListFn } = useGetBlogList({ my: true })
+const { list, total, currentPage, pageSizeRef, getBlogListFn } = useGetBlogList()
 
 // 编辑博客，跳转到博客编辑页
 function handleEdit(row) {
