@@ -29,8 +29,8 @@ onMounted(async () => {
   blogInfo.favorites = res.favorites
   blogInfo.isFavorited = res.isFavorited
   blogInfo.comments = res.comments
-  blogInfo.createdAt = res.createdAt
-  blogInfo.updatedAt = res.updatedAt
+  blogInfo.createdTime = res.createdTime
+  blogInfo.updatedTime = res.updatedTime
 })
 
 useTitle(toRef(blogInfo, 'title'))
@@ -67,7 +67,7 @@ const handleFavorite = async () => {
     <h1>{{ blogInfo.title }}</h1>
     <div class="blog-detail-info">
       <span class="blog-detail-author">{{ blogInfo.author }}</span>
-      <span class="blog-detail-date">{{ formatDate(blogInfo.createdAt) }}</span>
+      <span class="blog-detail-date">{{ formatDate(blogInfo.createdTime) }}</span>
     </div>
 
     <div

@@ -18,13 +18,13 @@ export default {
     }
 
     // 解构 blog 对象的属性
-    const { author, category, updatedAt, title, summary, description, likes, favorites, comments } =
+    const { author, category, updatedTime, title, summary, description, likes, favorites, comments } =
       blog.value
 
     return {
       author,
       category,
-      updatedAt,
+      updatedTime,
       title,
       summary,
       description,
@@ -48,7 +48,7 @@ export default {
         </div>
         <div class="category-time">
           <i class="el-icon-folder"></i> {{ category }} &nbsp;&nbsp;&nbsp;
-          <i class="el-icon-time"></i> {{ formatDate(updatedAt) }}
+          <i class="el-icon-time"></i> {{ formatDate(updatedTime) }}
         </div>
       </div>
     </div>

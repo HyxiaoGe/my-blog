@@ -1,7 +1,7 @@
 // 日期格式化函数，传入秒级别的时间戳，返回格式化的字符串
 // 返回格式如：1分钟前，1小时前，1天前，1月前，1年前
 export function formatDate(timestamp) {
-  const date = new Date(timestamp * 1000)
+  const date = new Date(timestamp)
   const now = Date.now()
   const diff = (now - date) / 1000
 
