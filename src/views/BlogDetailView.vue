@@ -2,10 +2,10 @@
 import { reactive, onMounted, toRef, toRaw } from 'vue'
 import { useRoute } from 'vue-router'
 import MarkdownIt from 'markdown-it'
-import { getBlogById, likeBlog, unlikeBlog, favoriteBlog, unfavoriteBlog } from '../api/blogApi'
+import { getBlogById, likeBlog, unlikeBlog } from '../api/blogApi'
 import useTitle from '../hooks/useTitle'
 import { formatDate } from '../utils/date'
-import { Pointer, Star } from '@element-plus/icons-vue'
+import { Pointer} from '@element-plus/icons-vue'
 import CommentView from './sub-views/CommentView.vue'
 
 const md = new MarkdownIt()
@@ -26,8 +26,6 @@ onMounted(async () => {
   blogInfo.author = res.author
   blogInfo.likes = res.likes
   blogInfo.isLiked = res.isLiked
-  blogInfo.favorites = res.favorites
-  blogInfo.isFavorited = res.isFavorited
   blogInfo.comments = res.comments
   blogInfo.createdTime = res.createdTime
   blogInfo.updatedTime = res.updatedTime
@@ -44,19 +42,6 @@ const handleLike = async () => {
     await likeBlog(blogId)
     blogInfo.likes += 1
     blogInfo.isLiked = true
-  }
-}
-
-// 收藏和取消收藏
-const handleFavorite = async () => {
-  if (blogInfo.isFavorited) {
-    await unfavoriteBlog(blogId)
-    blogInfo.favorites -= 1
-    blogInfo.isFavorited = false
-  } else {
-    await favoriteBlog(blogId)
-    blogInfo.favorites += 1
-    blogInfo.isFavorited = true
   }
 }
 </script>
@@ -76,7 +61,7 @@ const handleFavorite = async () => {
       v-html="md.render(toRaw(blogInfo.content)) || ''"
     ></div>
 
-    <!-- 生成一个div， 用于点赞和收藏， 水平居中显示 -->
+    <!-- 生成一个div， 用于点赞 水平居中显示 -->
     <div style="text-align: center; margin-top: 20px">
       <el-button
         :type="blogInfo.isLiked ? 'primary' : 'default'"
@@ -85,14 +70,6 @@ const handleFavorite = async () => {
         round
         @click="handleLike"
         >{{ blogInfo.likes }}</el-button
-      >
-      <el-button
-        :type="blogInfo.isFavorited ? 'primary' : 'default'"
-        :icon="Star"
-        size="large"
-        round
-        @click="handleFavorite"
-        >{{ blogInfo.favorites }}</el-button
       >
     </div>
     <CommentView :blogId = blogInfo.id />

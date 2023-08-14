@@ -18,10 +18,7 @@ export default {
     }
 
     // 解构 blog 对象的属性
-    const { author, category, updatedTime, title, summary, description, likes, favorites, comments } =
-      blog.value
-
-    return {
+    const {
       author,
       category,
       updatedTime,
@@ -29,7 +26,30 @@ export default {
       summary,
       description,
       likes,
-      favorites,
+      comments
+    } = blog.value
+
+    // 格式化 category
+    let categoryName = category
+
+    if (category === 'frontend') {
+      categoryName = '前端'
+    } else if (category === 'java') {
+      categoryName = 'Java'
+    } else if (category === 'python') {
+      categoryName = 'Python'
+    } else if (category === 'mini-program') {
+      categoryName = '小程序'
+    }
+
+    return {
+      author,
+      categoryName,
+      updatedTime,
+      title,
+      summary,
+      description,
+      likes,
       comments,
       handleClick,
       formatDate
@@ -47,7 +67,7 @@ export default {
           <el-icon><User /></el-icon> {{ author }}
         </div>
         <div class="category-time">
-          <i class="el-icon-folder"></i> {{ category }} &nbsp;&nbsp;&nbsp;
+          <i class="el-icon-folder"></i> {{ categoryName }} &nbsp;&nbsp;&nbsp;
           <i class="el-icon-time"></i> {{ formatDate(updatedTime) }}
         </div>
       </div>
@@ -65,9 +85,6 @@ export default {
       <div class="left-info">
         <div class="likes">
           <el-icon><Pointer /></el-icon> {{ likes }}
-        </div>
-        <div class="favorites">
-          <el-icon><Star /></el-icon> {{ favorites }}
         </div>
         <div class="comments">
           <el-icon><Comment /></el-icon> {{ comments }}
@@ -105,7 +122,6 @@ export default {
 .author,
 .category-time,
 .likes,
-.favorites,
 .comments {
   margin-right: 8px;
 }

@@ -44,7 +44,7 @@ async function handleDelete(row) {
     </router-link>
   </div>
 
-  <!-- 用table 显示博客列表，包括 title category likes favorites comments createdAt，再加两个操作按钮“编辑” “删除” -->
+  <!-- 用table 显示博客列表，包括 title category likes comments createdAt，再加两个操作按钮“编辑” “删除” -->
   <el-table :data="list" border style="width: 100%">
     <!-- 标题列，点击标题链接到博客详情页 -->
     <el-table-column prop="title" label="标题" width="180">
@@ -54,7 +54,6 @@ async function handleDelete(row) {
     </el-table-column>
     <el-table-column prop="category" label="分类" width="180"></el-table-column>
     <el-table-column prop="likes" label="点赞" width="180"></el-table-column>
-    <el-table-column prop="favorites" label="收藏" width="180"></el-table-column>
     <el-table-column prop="comments" label="评论" width="180"></el-table-column>
     <el-table-column prop="createdAt" label="创建时间" width="180"></el-table-column>
     <el-table-column label="操作" width="180">
