@@ -38,13 +38,8 @@ export async function unlikeBlog(id) {
 }
 
 // 收藏博客
-export async function favoriteBlog(id) {
-  return instance.post(`/blog/${id}/favorite`);
-}
-
-// 取消收藏博客
-export async function unfavoriteBlog(id) {
-  return instance.delete(`/blog/${id}/unfavorite`);
+export async function addBlogViews(id) {
+  return instance.post(`/blog-service/blog/addViews/${id}`);
 }
 
 // 搜索博客
@@ -61,7 +56,6 @@ export default {
   deleteBlog,
   likeBlog,
   unlikeBlog,
-  favoriteBlog,
-  unfavoriteBlog,
+  addBlogViews,
   searchBlogs,
 };

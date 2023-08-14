@@ -2,7 +2,7 @@
 import { reactive, onMounted, toRef, toRaw } from 'vue'
 import { useRoute } from 'vue-router'
 import MarkdownIt from 'markdown-it'
-import { getBlogById, likeBlog, unlikeBlog } from '../api/blogApi'
+import { getBlogById, likeBlog, unlikeBlog, addBlogViews } from '../api/blogApi'
 import useTitle from '../hooks/useTitle'
 import { formatDate } from '../utils/date'
 import { Pointer} from '@element-plus/icons-vue'
@@ -19,11 +19,13 @@ const blogId = $route.params.id || ''
 // onMounted 获取博客详情
 onMounted(async () => {
   const res = await getBlogById(blogId)
+  await addBlogViews(blogId)
   blogInfo.id = res.id
   blogInfo.title = res.title
   blogInfo.content = res.content
   blogInfo.category = res.category
   blogInfo.author = res.author
+  blogInfo.views = res.views
   blogInfo.likes = res.likes
   blogInfo.isLiked = res.isLiked
   blogInfo.comments = res.comments
@@ -53,6 +55,7 @@ const handleLike = async () => {
     <div class="blog-detail-info">
       <span class="blog-detail-author">{{ blogInfo.author }}</span>
       <span class="blog-detail-date">{{ formatDate(blogInfo.createdTime) }}</span>
+      <span class="blog-detail-date">{{ blogInfo.views }} views</span>
     </div>
 
     <div

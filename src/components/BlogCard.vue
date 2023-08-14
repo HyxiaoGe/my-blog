@@ -25,6 +25,7 @@ export default {
       title,
       summary,
       description,
+      views,
       likes,
       comments
     } = blog.value
@@ -49,6 +50,7 @@ export default {
       title,
       summary,
       description,
+      views,
       likes,
       comments,
       handleClick,
@@ -83,6 +85,9 @@ export default {
     <!-- 下层显示 -->
     <div class="bottom">
       <div class="left-info">
+        <div class="likes">
+          <el-icon><View /></el-icon> {{ views }}
+        </div>
         <div class="likes">
           <el-icon><Pointer /></el-icon> {{ likes }}
         </div>
@@ -121,8 +126,10 @@ export default {
 
 .author,
 .category-time,
+.views,
 .likes,
 .comments {
+  margin-top: 4px;
   margin-right: 8px;
 }
 
