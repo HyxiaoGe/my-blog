@@ -2,10 +2,10 @@
 import { reactive, onMounted, toRef, toRaw } from 'vue'
 import { useRoute } from 'vue-router'
 import MarkdownIt from 'markdown-it'
-import { getBlogById, likeBlog, unlikeBlog, addBlogViews } from '../api/blogApi'
+import { getBlogById, likeBlog, addBlogViews } from '../api/blogApi'
 import useTitle from '../hooks/useTitle'
 import { formatDate } from '../utils/date'
-import { Pointer} from '@element-plus/icons-vue'
+import { Pointer } from '@element-plus/icons-vue'
 import CommentView from './sub-views/CommentView.vue'
 
 const md = new MarkdownIt()
@@ -20,6 +20,7 @@ const blogId = $route.params.id || ''
 onMounted(async () => {
   const res = await getBlogById(blogId)
   await addBlogViews(blogId)
+  console.log(res)
   blogInfo.id = res.id
   blogInfo.title = res.title
   blogInfo.content = res.content
@@ -36,12 +37,11 @@ onMounted(async () => {
 useTitle(toRef(blogInfo, 'title'))
 // 点赞和取消点赞
 const handleLike = async () => {
+  await likeBlog(blogId)
   if (blogInfo.isLiked) {
-    await unlikeBlog(blogId)
     blogInfo.likes -= 1
     blogInfo.isLiked = false
   } else {
-    await likeBlog(blogId)
     blogInfo.likes += 1
     blogInfo.isLiked = true
   }
@@ -75,7 +75,7 @@ const handleLike = async () => {
         >{{ blogInfo.likes }}</el-button
       >
     </div>
-    <CommentView :blogId = blogInfo.id />
+    <CommentView :blogId="blogInfo.id" />
   </div>
 </template>
 

@@ -29,17 +29,12 @@ export async function deleteBlog(id) {
 
 // 给博客点赞
 export async function likeBlog(id) {
-  return instance.post(`/blog/${id}/like`);
-}
-
-// 取消博客点赞
-export async function unlikeBlog(id) {
-  return instance.delete(`/blog/${id}/unlike`);
+  return instance.post(`/blog-service/blog/operate_like/${id}`);
 }
 
 // 收藏博客
 export async function addBlogViews(id) {
-  return instance.post(`/blog-service/blog/addViews/${id}`);
+  return instance.post(`/blog-service/blog/add_views/${id}`);
 }
 
 // 搜索博客
@@ -55,7 +50,6 @@ export default {
   editBlog,
   deleteBlog,
   likeBlog,
-  unlikeBlog,
   addBlogViews,
   searchBlogs,
 };

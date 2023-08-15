@@ -3,7 +3,7 @@ import axios from 'axios';
 // 创建axios实例
 const instance = axios.create({
   baseURL: 'http://localhost:3000', // 设置请求的base URL，根据实际情况进行修改
-  timeout: 5000, // 设置请求超时时间
+  timeout: 30000, // 设置请求超时时间
 });
 
 // 响应拦截器
