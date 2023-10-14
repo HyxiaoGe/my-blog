@@ -29,11 +29,16 @@ function handleSearch() {
     clearable
     class="search-input"
   />
+  <el-button @click="handleSearch" class="search-button" type="primary">搜索</el-button>
 </template>
 
 <style>
 .search-input {
   width: 200px;
   height: 40px;
+}
+
+.search-button {
+  margin-left: 10px;  /* 调整这个值以增加或减少间距 */
 }
 </style>

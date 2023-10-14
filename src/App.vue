@@ -2,16 +2,6 @@
 import { RouterLink, RouterView } from 'vue-router'
 import NavMenu from './components/NavMenu.vue';
 import SearchInput from './components/SearchInput.vue';
-import UserInfo from './components/UserInfo.vue';
-// import { getUserInfo } from './api/userApi';
-// import { useUserStore } from './stores/user';
-
-// const { setUserInfo } = useUserStore();
-
-// 获取用户信息
-// getUserInfo().then(res => {
-//   setUserInfo(res);
-// });
 </script>
 
 <template>
@@ -28,13 +18,17 @@ import UserInfo from './components/UserInfo.vue';
         <NavMenu class="nav-menu"/>
         <SearchInput />
       </div>
-      <!-- <div class="right-section">
-        <UserInfo />
-      </div> -->
     </div>
 
   </div>
   <RouterView />
+
+    <!-- 底部备案信息 -->
+    <footer class="footer">
+      <span>备案号：</span><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="footer-link">琼ICP备2023004973号</a>
+      <p>Copyright © 2023 hyxiaoblog.com. All Rights Reserved.</p>
+    </footer>
+
 </template>
 
 <style scoped>
@@ -51,6 +45,18 @@ import UserInfo from './components/UserInfo.vue';
   background-color: #f5f5f5;
   padding: 0 20px;
   border-bottom: solid 1px var(--el-menu-border-color);
+}
+
+.footer {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer-link {
+  text-decoration: none; /* 去掉下划线 */
+  color: #333; /* 设置链接颜色 */
+  margin: 5px; /* 调整链接之间的间距 */
 }
 
 .left-section {
