@@ -26,14 +26,6 @@ const router = createRouter({
       path: '/blog/create',
       component: () => import('../views/CreateEditBlogView.vue')
     },
-    // {
-    //   path: '/login',
-    //   component: () => import('../views/LoginView.vue')
-    // },
-    // {
-    //   path: '/register',
-    //   component: () => import('../views/RegisterView.vue')
-    // },
     {
       path: '/my-blogs',
       component: () => import('../views/MyBlogsView.vue')

@@ -3,7 +3,7 @@ import instance from './axiosInstance';
 // 获取博客评论列表
 export async function getComments(blogId) {
   try {
-    const response = await instance.get(`/comment-service/comment/blog/${blogId}`);
+    const response = await instance.get(`/comment/blog/${blogId}`);
     return response;
   } catch (error) {
     console.error('获取博客评论列表失败：', error);
