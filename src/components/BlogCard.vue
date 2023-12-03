@@ -19,8 +19,8 @@ export default {
 
     // 解构 blog 对象的属性
     const {
-      author,
       category,
+      createdTime,
       updatedTime,
       title,
       summary,
@@ -37,15 +37,15 @@ export default {
       categoryName = '前端'
     } else if (category === 'java') {
       categoryName = 'Java'
-    } else if (category === 'python') {
-      categoryName = 'Python'
-    } else if (category === 'mini-program') {
-      categoryName = '小程序'
+    } else if (category === 'mysql') {
+      categoryName = 'MySQL'
+    } else if (category === 'computer-network') {
+      categoryName = '计算机网络'
     }
 
     return {
-      author,
       categoryName,
+      createdTime,
       updatedTime,
       title,
       summary,
@@ -62,113 +62,118 @@ export default {
 
 <template>
   <div class="blog-card" @click="handleClick">
-    <!-- 上层显示 -->
+    <!-- 上层显示：分类和时间 -->
     <div class="top">
-      <div class="left-info">
-        <div class="author">
-          <el-icon><User /></el-icon> {{ author }}
-        </div>
-        <div class="category-time">
-          <i class="el-icon-folder"></i> {{ categoryName }} &nbsp;&nbsp;&nbsp;
-          <i class="el-icon-time"></i> {{ formatDate(updatedTime) }}
-        </div>
+      <div>
+        <i class="el-icon-folder icon-style"></i>
+        <el-icon><List /></el-icon>
+        <span class="category-name">{{ categoryName }}</span>
+        <i class="el-icon-time icon-style"></i>
+        <span class="created-time">{{ formatDate(createdTime) }}</span>
       </div>
     </div>
-    <!-- 中层显示 -->
+    <!-- 中层显示：标题、概述和描述 -->
     <div class="middle">
       <h2 class="title">
-        <a href="javascript:void(0)" class="link">{{ title }}</a>
+        {{ title }}
       </h2>
       <p class="summary">{{ summary }}</p>
       <p class="description">{{ description }}</p>
     </div>
-    <!-- 下层显示 -->
+    <!-- 下层显示：浏览量、喜欢和评论数 -->
     <div class="bottom">
-      <div class="left-info">
-        <div class="likes">
-          <el-icon><View /></el-icon> {{ views }}
-        </div>
-        <div class="likes">
-          <el-icon><Pointer /></el-icon> {{ likes }}
-        </div>
-        <div class="comments">
-          <el-icon><Comment /></el-icon> {{ comments }}
-        </div>
+      <div class="interaction-info">
+        <i class="el-icon-view icon-style"></i>
+        <el-icon><View /></el-icon>
+        <span>{{ views }}</span>
+        <i class="el-icon-pointer icon-style"></i>
+        <el-icon><Pointer /></el-icon>
+        <span>{{ likes }}</span>
+        <i class="el-icon-comment icon-style"></i>
+        <el-icon><Comment /></el-icon>
+        <span>{{ comments }}</span>
       </div>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 .blog-card {
-  padding: 8px;
+  padding: 16px;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  border-radius: 8px;
+  transition: box-shadow 0.3s, transform 0.3s;
   cursor: pointer;
+  overflow: hidden; /* 防止内容溢出 */
 }
 
 .blog-card:hover {
-  background-color: #f5f5f5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px); /* 轻微提升效果 */
+}
+
+.icon-style {
+  margin-right: 4px;
 }
 
 .top {
   display: flex;
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 4px;
-}
-
-.left-info {
-  display: flex;
   align-items: center;
-}
-
-.author,
-.category-time,
-.views,
-.likes,
-.comments {
-  margin-top: 4px;
-  margin-right: 8px;
-}
-
-.category-time {
-  margin-left: 8px;
-}
-
-.gray-text {
-  color: #999;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
 }
 
 .middle {
-  margin: 4px 0;
+  margin-bottom: 12px;
 }
 
 .title {
-  font-size: 20px;
-  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
 }
 
-.title a {
-  color: #1890ff;
-  text-decoration: underline;
+.summary {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 4px;
 }
 
-.summary,
 .description {
+  font-size: 14px;
   color: #666;
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+.category-name {
+  margin-left: 2px;
+  margin-right: 16px;
+}
+
+.created-time {
+  margin-left: 8px;
 }
 
 .bottom {
   display: flex;
-  justify-content: flex-start; /* 靠左显示 */
-  font-size: 14px;
-  color: #999;
+  align-items: center;
 }
 
-.bottom div {
-  margin-right: 10px; /* 调整间距 */
+.interaction-info {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.interaction-info > i {
+  margin-right: 6px;
+}
+
+.interaction-info > span {
+  margin-right: 16px;
+  color: #999;
 }
 </style>
+

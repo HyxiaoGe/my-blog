@@ -2,7 +2,7 @@ import instance from './axiosInstance';
 
 // 获取博客列表
 export async function getBlogs(opt = {}) {
-  const { page = 1, pageSize = 10, category = '', keyword = ''} = opt;
+  const { page = 1, pageSize = 5, category = '', keyword = ''} = opt;
   const url = `/blog/list?page=${page}&pageSize=${pageSize}&category=${category}&keyword=${keyword}`;
   return instance.get(url);
 }
@@ -10,6 +10,11 @@ export async function getBlogs(opt = {}) {
 // 获取博客详情
 export async function getBlogById(id) {
   return instance.get(`/blog/${id}`);
+}
+
+// 获取Top博客
+export async function getTopBlogs() {
+  return instance.get(`/blog/top`);
 }
 
 // 创建新博客
@@ -45,6 +50,7 @@ export async function searchBlogs(keyword) {
 // 导出所有API接口
 export default {
   getBlogs,
+  getTopBlogs,
   getBlogById,
   createBlog,
   editBlog,

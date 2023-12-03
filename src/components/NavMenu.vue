@@ -26,8 +26,8 @@ function handleMenuClick(category) {
     <el-menu :default-active="activeMenu" class="menu" mode="horizontal">
       <el-menu-item index="frontend" @click="handleMenuClick('frontend')">前端</el-menu-item>
       <el-menu-item index="java" @click="handleMenuClick('java')">Java</el-menu-item>
-      <el-menu-item index="python" @click="handleMenuClick('python')">Python</el-menu-item>
-      <el-menu-item index="mini-program" @click="handleMenuClick('mini-program')">小程序</el-menu-item>
+      <el-menu-item index="mysql" @click="handleMenuClick('mysql')">MySQL</el-menu-item>
+      <el-menu-item index="computer-network" @click="handleMenuClick('computer-network')">计算机网络</el-menu-item>
     </el-menu>
   </template>
   

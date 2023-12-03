@@ -20,12 +20,10 @@ const blogId = $route.params.id || ''
 onMounted(async () => {
   const res = await getBlogById(blogId)
   await addBlogViews(blogId)
-  console.log(res)
   blogInfo.id = res.id
   blogInfo.title = res.title
   blogInfo.content = res.content
   blogInfo.category = res.category
-  blogInfo.author = res.author
   blogInfo.views = res.views
   blogInfo.likes = res.likes
   blogInfo.isLiked = res.isLiked
@@ -49,11 +47,10 @@ const handleLike = async () => {
 </script>
 
 <template>
-  <!-- 显示 title author createdAt Content -->
+  <!-- 显示 title createdAt Content -->
   <div class="blog-detail-container">
     <h1>{{ blogInfo.title }}</h1>
     <div class="blog-detail-info">
-      <span class="blog-detail-author">{{ blogInfo.author }}</span>
       <span class="blog-detail-date">{{ formatDate(blogInfo.createdTime) }}</span>
       <span class="blog-detail-date">{{ blogInfo.views }} views</span>
     </div>
@@ -89,10 +86,6 @@ const handleLike = async () => {
 
 .blog-detail-info {
   margin-bottom: 20px;
-}
-
-.blog-detail-author {
-  margin-right: 10px;
 }
 
 .blog-detail-date {

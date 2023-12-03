@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // 创建axios实例
 const instance = axios.create({
-  baseURL: 'http://localhost:3000/api/', // 设置请求的base URL，根据实际情况进行修改
-  // baseURL: 'http://www.hyxiaoblog.com/api/',
+  // baseURL: 'http://localhost:3000/api/', // 设置请求的base URL，根据实际情况进行修改
+  baseURL: 'http://www.hyxiaoblog.com/api/',
   timeout: 30000, // 设置请求超时时间
 });
 

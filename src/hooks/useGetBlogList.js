@@ -10,15 +10,16 @@ function useGetBlogList() {
   const rows = ref([])
   const total = ref(0)
   const currentPage = ref(1)
-  const pageSizeRef = ref(10)
+  const pageSizeRef = ref(5)
 
   const getBlogListFn = async () => {
+  
     currentPage.value = +$route.query.page || 1
-    pageSizeRef.value = +$route.query.pageSize || 10
+    pageSizeRef.value = +$route.query.pageSize || 5
 
     const queryInfo = {
       page: +$route.query.page || 1,
-      pageSize: +$route.query.pageSize || 10,
+      pageSize: +$route.query.pageSize || 5,
       category: $route.query.category || '',
       keyword: $route.query.keyword || ''
     }
