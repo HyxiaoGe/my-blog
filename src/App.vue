@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import NavMenu from './components/NavMenu.vue';
 import SearchInput from './components/SearchInput.vue';
+import BackToTopButton from './components/BackToTopButton.vue';
 </script>
 
 <template>
@@ -17,6 +18,7 @@ import SearchInput from './components/SearchInput.vue';
         </div>
         <NavMenu class="nav-menu"/>
         <SearchInput />
+        <BackToTopButton />
       </div>
     </div>
 

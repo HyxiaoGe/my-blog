@@ -9,7 +9,6 @@ const router = useRouter()
 onMounted(async () => {
   try {
     const response = await getTopBlogs()
-    console.log('Data received:', response) // 添加日志查看收到的数据
     if (response && response.rows) {
       topBlogs.value = response.rows
     } else {
@@ -41,61 +40,55 @@ const handleClick = (blogId) => {
 .top-blog-card {
   border: 1px solid #f5f5f5;
   padding: 20px;
-  margin-bottom: 20px; /* 或根据需要进行调整 */
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.top-blog-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  background-color: #fafafa;
 }
 
 .top-blog-title {
-  margin-bottom: 10px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #eaeaea; /* 添加一条线以分隔标题和列表 */
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+  font-size: 18px;
+  color: #333;
 }
 
 .top-blog-list {
-  max-height: 400px; /* 或根据需要进行调整 */
-  overflow-y: auto; /* 添加滚动条 */
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .blog-entry {
-  margin-bottom: 10px; /* 每条博客之间的间距 */
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s ease;
 }
 
-.blog-link {
-  display: block; /* 链接占满整行 */
-  white-space: nowrap; /* 不换行 */
-  overflow: hidden; /* 超出部分隐藏 */
-  text-overflow: ellipsis; /* 超出部分显示省略号 */
-  max-width: 100%; /* 限制最大宽度 */
-  color: #333; /* 文本颜色，根据需要调整 */
-  text-decoration: none; /* 去除下划线 */
+.blog-entry:last-child {
+  border-bottom: none;
 }
 
-.blog-link:hover {
-  color: #555; /* 鼠标悬浮时的文本颜色，根据需要调整 */
-}
-
-.blog-entry {
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 添加过渡效果 */
-  cursor: pointer; /* 表明可以点击 */
-}
-
-.blog-entry:hover, .blog-entry:active {
-  background-color: #f0f0f0; /* 鼠标悬停时的背景色 */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 鼠标悬停时的阴影效果 */
-}
-
-.blog-link {
+.blog-entry a {
   display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  color: #333;
+  padding: 10px;
   text-decoration: none;
-  transition: color 0.3s ease; /* 添加文本颜色变化的过渡效果 */
+  color: #333; /* 统一字体颜色 */
+  background-color: #fff;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 4px;
 }
 
-.blog-link:hover, .blog-link:active {
-  color: #555; /* 鼠标悬停和点击时文本颜色变化 */
+.blog-entry a:hover {
+  color: #555;
+  background-color: #f0f0f0;
 }
 </style>
+
 

@@ -2,6 +2,7 @@
 import useTitle from '../hooks/useTitle'
 import BlogCard from '../components/BlogCard.vue'
 import TopBlogCard from '../components/TopBlogCard.vue'
+import CategoryCard from '../components/CategoryCard.vue'
 import useGetBlogList from '../hooks/useGetBlogList'
 import ListPage from '../components/ListPage.vue'
 
@@ -19,8 +20,9 @@ const { rows, total, currentPage, pageSizeRef } = useGetBlogList()
       </div>
       <ListPage :total="total" :currentPage="currentPage" :pageSizeRef="pageSizeRef" />
     </div>
-    <div class="top-blog">
+    <div class="side-content">
       <TopBlogCard />
+      <CategoryCard /> <!-- 类目统计的卡片放在这里 -->
     </div>
   </main>
 </template>
@@ -36,16 +38,19 @@ const { rows, total, currentPage, pageSizeRef } = useGetBlogList()
   margin-right: 20px; /* 右边栏和左边栏之间的空隙 */
 }
 
+/* 新增.side-content容器，包含TopBlogCard和CategoryCard */
+.side-content {
+  flex: 1; /* 占据较少的空间 */
+  width: 20%; /* 或者你可以设置一个具体的宽度 */
+  overflow: auto; /* 如果内容太多，可能需要滚动 */
+  display: flex;
+  flex-direction: column; /* 让子组件垂直排列 */
+}
+
 .blog-container {
   margin-bottom: 20px;
   border: 1px solid #f5f5f5;
 }
 
-.top-blog {
-  flex: 1; /* TopBlogCard占据较少的空间 */
-  width: 20%; /* 或者你可以设置一个具体的宽度 */
-  /* 如果TopBlogCard内容太多，可能需要滚动 */
-  overflow: auto;
-}
 </style>
 

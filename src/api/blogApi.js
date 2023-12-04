@@ -17,6 +17,11 @@ export async function getTopBlogs() {
   return instance.get(`/blog/top`);
 }
 
+// 获取博客类目统计
+export async function getBlogCategory() {
+  return instance.get(`/blog/category`);
+}
+
 // 创建新博客
 export async function createBlog(blogData) {
   return instance.post('/create-blog', blogData);
