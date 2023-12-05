@@ -22,7 +22,7 @@ const { rows, total, currentPage, pageSizeRef } = useGetBlogList()
     </div>
     <div class="side-content">
       <TopBlogCard />
-      <CategoryCard /> <!-- 类目统计的卡片放在这里 -->
+      <CategoryCard />
     </div>
   </main>
 </template>

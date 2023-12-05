@@ -32,7 +32,7 @@
   <style scoped>
   .back-to-top {
     position: fixed;
-    bottom: 2rem;
+    bottom: 8rem;
     right: 2rem;
     border: none;
     background-color: #4CAF50; /* 绿色背景 */

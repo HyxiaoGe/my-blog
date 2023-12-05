@@ -3,6 +3,8 @@ import { RouterLink, RouterView } from 'vue-router'
 import NavMenu from './components/NavMenu.vue';
 import SearchInput from './components/SearchInput.vue';
 import BackToTopButton from './components/BackToTopButton.vue';
+import ThemeSwitcher from './components/ThemeSwitcher.vue';
+
 </script>
 
 <template>
@@ -20,8 +22,10 @@ import BackToTopButton from './components/BackToTopButton.vue';
         <SearchInput />
         <BackToTopButton />
       </div>
+      <div class="right-section">
+        <ThemeSwitcher />
+      </div>
     </div>
-
   </div>
   <RouterView />
 
@@ -97,5 +101,10 @@ import BackToTopButton from './components/BackToTopButton.vue';
 
 .container {
   width: 1000px;
+}
+
+.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
 }
 </style>
