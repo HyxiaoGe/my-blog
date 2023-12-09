@@ -22,9 +22,9 @@ import ThemeSwitcher from './components/ThemeSwitcher.vue';
         <SearchInput />
         <BackToTopButton />
       </div>
-      <div class="right-section">
+      <!-- <div class="right-section">
         <ThemeSwitcher />
-      </div>
+      </div> -->
     </div>
   </div>
   <RouterView />

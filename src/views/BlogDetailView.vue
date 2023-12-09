@@ -2,13 +2,35 @@
 import { reactive, onMounted, toRef, toRaw } from 'vue'
 import { useRoute } from 'vue-router'
 import MarkdownIt from 'markdown-it'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/idea.css'
 import { getBlogById, likeBlog, addBlogViews } from '../api/blogApi'
 import useTitle from '../hooks/useTitle'
 import { formatDate } from '../utils/date'
 import { Pointer } from '@element-plus/icons-vue'
 import CommentView from './sub-views/CommentView.vue'
 
-const md = new MarkdownIt()
+// const md = new MarkdownIt()
+
+const md = new MarkdownIt({
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        // Use the new API
+        return '<pre class="hljs"><code>' + 
+               hljs.highlight(str, {language: lang, ignoreIllegals: true}).value + 
+               '</code></pre>';
+      } catch (__) {
+        // Return unhighlighted code if there is an error
+        return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+      }
+    }
+    
+    // If no language is specified or if it's not found, return plain code block
+    return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+  }
+});
+
 
 const $route = useRoute()
 
