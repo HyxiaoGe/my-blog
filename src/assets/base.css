@@ -24,7 +24,7 @@
 
 /* semantic color variables for this project */
 :root {
-  --color-background: #007bff;
+  --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
   --background-dark: #121212; /* 暗模式背景色 */
