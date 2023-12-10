@@ -24,7 +24,7 @@
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-white);
+  --color-background: #007bff;
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
   --background-dark: #121212; /* 暗模式背景色 */
@@ -60,105 +60,6 @@
   box-sizing: border-box;
   margin: 0;
   font-weight: normal;
-}
-
-/* 定义夜间模式的样式 */
-.dark-theme {
-  --color-background: var(--vt-c-black);
-  --color-background-soft: var(--vt-c-black-soft);
-  --color-background-mute: var(--vt-c-black-mute);
-
-  --color-border: var(--vt-c-divider-dark-2);
-  --color-border-hover: var(--vt-c-divider-dark-1);
-
-  --color-heading: var(--vt-c-text-dark-1);
-  --color-text: var(--vt-c-text-dark-2);
-
-  --background-dark: #121212; /* 或者任何其他你选择的暗色调 */
-  --text-dark: #e0e0e0; /* 确保这个颜色在暗背景上是可见的 */
-}
-
-/* 应用夜间模式样式到特定区域 */
-.dark-theme .top-navbar,
-.dark-theme .footer {
-  background-color: var(--background-color); /* 使用CSS变量 */
-  color: var(--text-color);
-}
-
-/* 如果其他地方定义了样式并且有更高的权重，您可能需要这样做 */
-.dark-theme .top-navbar,
-.dark-theme .footer {
-  background-color: #121212 !important; /* 夜间模式背景色 */
-  color: #ffffff !important; /* 夜间模式文字颜色 */
-}
-
-/* 全局样式文件中 */
-.dark-theme .el-menu {
-  background-color: var(--vt-c-black-soft); /* 为夜间模式设置适当的背景色 */
-  /* 如果你有为文字颜色设置变量，也可以在这里设置 */
-  color: var(--vt-c-text-dark-1);
-}
-
-/* 如果需要，也可以为菜单项设置特定的颜色 */
-.dark-theme .el-menu .el-menu-item {
-  color: var(--vt-c-text-dark-2);
-}
-
-/* 鼠标悬停在菜单项上的样式 */
-.dark-theme .el-menu .el-menu-item:hover {
-  background-color: var(--vt-c-black-mute);
-  color: var(--vt-c-text-dark-1);
-}
-
-/* 当前活动菜单项的样式 */
-.dark-theme .el-menu .el-menu-item.is-active {
-  background-color: var(--vt-c-black);
-  color: var(--vt-c-text-dark-1);
-}
-
-/* 在你的全局样式文件中为.dark-theme添加样式 */
-.dark-theme {
-  --background-dark: #121212; /* 或者任何其他你选择的暗色调 */
-  --text-dark: #e0e0e0; /* 确保这个颜色在暗背景上是可见的 */
-}
-
-/* 确保所有卡片和文字遵循这些变量 */
-.dark-theme .el-menu,
-.dark-theme .el-menu-item,
-.dark-theme .top-blog-card,
-.dark-theme .top-blog-card .blog-entry,
-.dark-theme .category-card .category-item {
-  background-color: var(--background-dark);
-  color: var(--text-dark);
-}
-
-/* 鼠标悬停在条目上时的样式 */
-.dark-theme .el-menu .el-menu-item:hover,
-.dark-theme .top-blog-card .blog-entry:hover,
-.dark-theme .category-card .category-item:hover {
-  background-color: var(--background-dark); /* 可以稍微亮一些以提供悬停反馈 */
-}
-
-/* 如果这些元素包含链接，你可能还需要为链接添加样式 */
-.dark-theme .top-blog-card a,
-.dark-theme .category-card a {
-  color: var(--text-dark); /* 确保链接在暗背景上是可见的 */
-}
-
-/* 当链接被悬停时 */
-.dark-theme .top-blog-card a:hover,
-.dark-theme .category-card a:hover {
-  color: #ffffff; /* 或者其他更亮的颜色以提供足够的对比 */
-}
-
-/* 修正链接颜色，确保在暗背景上可见 */
-.dark-theme a {
-  color: var(--text-dark) !important; /* 对所有链接应用 */
-}
-
-/* 当链接被悬停时，提供足够的对比 */
-.dark-theme a:hover {
-  color: #ffffff !important; /* 或者其他更亮的颜色以提供足够的对比 */
 }
 
 /* 直接针对HTML元素增加样式 */
