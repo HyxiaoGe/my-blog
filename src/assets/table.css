@@ -1,0 +1,71 @@
+/* 设置表格的基本样式 */
+table {
+    max-width: 90vw; /* 表格的最大宽度为视口宽度的90% */
+    margin-right: auto; /* 右边距自动 */
+    overflow-x: auto; /* 如果表格宽度超出容器，出现横向滚动条 */
+    display: block; /* 将表格显示为块级元素，这样才能应用外边距自动居中 */
+  }
+  
+  @media (max-width: 600px) {
+    table {
+      max-width: 100vw; /* 在较小屏幕上，表格的最大宽度为视口宽度的100% */
+    }
+  }
+  
+  /* 设置表格边框圆角 */
+  table th,
+  table td {
+    border: 1px solid #ddd; /* 单元格边框颜色 */
+    padding: 10px; /* 单元格内边距 */
+  }
+  
+  /* 表格第一行的顶部左右圆角 */
+  table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+  }
+  
+  table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+  }
+  
+  /* 表格最后一行的底部左右圆角 */
+  table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+  }
+  
+  table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+  }
+  
+  /* 设置表头的样式 */
+  th {
+    background-color: #f8f8f8; /* 表头背景色 */
+    color: #333; /* 表头字体颜色 */
+    font-weight: bold; /* 表头字体加粗 */
+    text-align: left; /* 文本左对齐 */
+  }
+  
+  /* 设置表格条纹效果 */
+  tbody tr:nth-child(odd) {
+    background-color: #fafafa; /* 奇数行背景色 */
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #eee; /* 偶数行背景色 */
+  }
+  
+  /* 设置鼠标悬停的样式 */
+  tbody tr:hover {
+    background-color: #e1e1e1; /* 鼠标悬停时的背景色 */
+  }
+  
+  /* 设置表格单元格的样式 */
+  td {
+    border-top: none; /* 移除单元格顶部边框 */
+  }
+  
+  /* 设置垂直居中对齐 */
+  th,
+  td {
+    vertical-align: middle; /* 设置单元格内容垂直居中 */
+  }

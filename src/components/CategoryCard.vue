@@ -25,6 +25,11 @@ export default {
         'java': 'Java',
         'mysql': 'MySQL',
         'computer-network': '计算机网络',
+        'linux': 'Linux',
+        'cloud-native': '云原生',
+        'mq': '消息队列',
+        'es': 'Elasticsearch',
+        'redis': 'Redis',
       };
       return nameMap[categoryName] || categoryName;
     },

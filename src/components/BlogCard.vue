@@ -41,6 +41,16 @@ export default {
       categoryName = 'MySQL'
     } else if (category === 'computer-network') {
       categoryName = '计算机网络'
+    } else if (category === 'linux') {
+      categoryName = 'Linux'
+    } else if (category === 'cloud-native') {
+      categoryName = '云原生'
+    } else if (category === 'mq') {
+      categoryName = '消息队列'
+    } else if (category === 'es') {
+      categoryName = 'Elasticsearch'
+    } else if (category === 'redis') {
+      categoryName = 'Redis'
     }
 
     return {
