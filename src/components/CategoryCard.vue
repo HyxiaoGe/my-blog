@@ -30,6 +30,7 @@ export default {
         'mq': '消息队列',
         'es': 'Elasticsearch',
         'redis': 'Redis',
+        'cloud-service': '云服务',
       };
       return nameMap[categoryName] || categoryName;
     },

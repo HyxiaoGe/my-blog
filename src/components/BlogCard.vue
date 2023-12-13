@@ -51,6 +51,8 @@ export default {
       categoryName = 'Elasticsearch'
     } else if (category === 'redis') {
       categoryName = 'Redis'
+    } else if (category === 'cloud-service') {
+      categoryName = '云服务'
     }
 
     return {

@@ -33,6 +33,7 @@ function handleMenuClick(category) {
       <el-menu-item index="mq" @click="handleMenuClick('mq')">消息队列</el-menu-item>
       <el-menu-item index="es" @click="handleMenuClick('es')">Elasticsearch</el-menu-item>
       <el-menu-item index="redis" @click="handleMenuClick('redis')">Redis</el-menu-item>
+      <el-menu-item index="cloud-service" @click="handleMenuClick('cloud-service')">云服务</el-menu-item>
     </el-menu>
   </template>
   
