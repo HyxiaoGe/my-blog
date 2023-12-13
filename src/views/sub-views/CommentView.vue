@@ -27,14 +27,14 @@ watch(toRef(props, 'blogId'), async (newBlogId) => {
 
 // 发表评论
 const comment = ref('')
-const handleCreateComment = async (blogId, comment) => {
-  console.log('发表评论：', blogId, comment)
-  if (!comment) return
-  await createComment(blogId, comment)
-  // 发表成功后，情况输入框
+const handleCreateComment = async (blogId) => {
+  console.log('发表评论：', blogId, comment.value)
+  if (!comment.value) return
+  await createComment(blogId, comment.value)
   comment.value = ''
+  // 发表成功后，情况输入框
   const res = await getComments(blogId)
-  comments.value = comments.value.concat(res)
+  comments.value = res
 }
 
 // 删除评论
@@ -68,10 +68,8 @@ const handleDeleteComment = async (blogId, commentId) => {
       <div class="comment-item-header">
         <div class="comment-item-header-left">
           <el-icon><User /></el-icon>
-          &nbsp;
-          <span class="nickname">{{ comment.authorNickname }}</span>
-          &nbsp;-&nbsp;
-          <span class="username">{{ comment.authorUsername }}</span>
+          &nbsp;&nbsp;
+          <span class="username">{{ comment.userName }}</span>
           &nbsp;&nbsp;
           <span class="time">{{ formatDate(comment.createdTime) }}</span>
         </div>
