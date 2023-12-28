@@ -1,7 +1,8 @@
 <script setup>
-import { reactive, onMounted, toRef, toRaw } from 'vue'
+import { reactive, onMounted, toRef, toRaw, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import MarkdownIt from 'markdown-it'
+import anchor from 'markdown-it-anchor'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/idea.css'
 import { getBlogById, likeBlog, addBlogViews } from '../api/blogApi'
@@ -9,28 +10,27 @@ import useTitle from '../hooks/useTitle'
 import { formatDate } from '../utils/date'
 import { Pointer } from '@element-plus/icons-vue'
 import CommentView from './sub-views/CommentView.vue'
-
-// const md = new MarkdownIt()
+import TableOfContents from '../components/TableOfContents.vue'
 
 const md = new MarkdownIt({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        // Use the new API
-        return '<pre class="hljs"><code>' + 
-               hljs.highlight(str, {language: lang, ignoreIllegals: true}).value + 
-               '</code></pre>';
+        return (
+          '<pre class="hljs"><code>' +
+          hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+          '</code></pre>'
+        )
       } catch (__) {
-        // Return unhighlighted code if there is an error
-        return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+        return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>'
       }
     }
-    
-    // If no language is specified or if it's not found, return plain code block
-    return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
-  }
-});
 
+    return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>'
+  }
+}).use(anchor, {
+  permalink: anchor.permalink.headerLink()
+})
 
 const $route = useRoute()
 
@@ -52,6 +52,11 @@ onMounted(async () => {
   blogInfo.comments = res.comments
   blogInfo.createdTime = res.createdTime
   blogInfo.updatedTime = res.updatedTime
+})
+
+const contentForToc = computed(() => {
+  // 确保 blogInfo.content 是一个字符串
+  return typeof blogInfo.content === 'string' ? md.render(blogInfo.content) : ''
 })
 
 useTitle(toRef(blogInfo, 'title'))
@@ -95,6 +100,7 @@ const handleLike = async () => {
       >
     </div>
     <CommentView :blogId="blogInfo.id" />
+    <TableOfContents :content="contentForToc" />
   </div>
 </template>
 
@@ -104,6 +110,8 @@ const handleLike = async () => {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-right: 250px;
 }
 
 .blog-detail-info {
@@ -115,6 +123,8 @@ const handleLike = async () => {
 }
 
 .blog-detail-content {
+  max-width: calc(100% - 250px);
+  margin-right: auto;
   line-height: 1.5;
 }
 </style>

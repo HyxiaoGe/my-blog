@@ -92,3 +92,31 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+a.header-anchor {
+  color: var(--color-text);
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+/* 添加不同级别标题的缩进 */
+.level-1 {
+  padding-left: 1em;
+  /* h1级别标题的缩进 */
+}
+
+.level-2 {
+  padding-left: 2em;
+  /* h2级别标题的缩进 */
+}
+
+.level-3 {
+  padding-left: 3em;
+  /* h3级别标题的缩进 */
+}
+
+/* 如果有更深层级的标题，继续添加相应的样式 */
+.level-4 {
+  padding-left: 4em;
+  /* h4级别标题的缩进 */
+}

@@ -86,9 +86,9 @@ export default {
     </div>
     <!-- 中层显示：标题、概述和描述 -->
     <div class="middle">
-      <h2 class="title">
+      <h1 class="title">
         {{ title }}
-      </h2>
+      </h1>
       <p class="summary">{{ summary }}</p>
       <p class="description">{{ description }}</p>
     </div>
@@ -114,13 +114,15 @@ export default {
   padding: 16px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  transition: box-shadow 0.3s, transform 0.3s;
+  transition:
+    box-shadow 0.3s,
+    transform 0.3s;
   cursor: pointer;
   overflow: hidden; /* 防止内容溢出 */
 }
 
 .blog-card:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px); /* 轻微提升效果 */
 }
 
@@ -188,4 +190,3 @@ export default {
   color: #999;
 }
 </style>
-
