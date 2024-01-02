@@ -12,9 +12,7 @@ watch(
   () => props.content,
   (newContent) => {
     if (newContent) {
-      console.log('Received content:', newContent)
       const matches = [...newContent.matchAll(/<h([1-6]) id="([^"]+)"[^>]*>(.*?)<\/h\1>/g)]
-      console.log('Extracted headings:', matches)
       headings.value = matches.map((match) => {
         // 移除 <a> 标签及其内容，只保留标题文本。
         const textContent = match[3]
