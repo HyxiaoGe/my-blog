@@ -1,7 +1,7 @@
 <script>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { formatDate } from '../utils/date'
+import { formatRelativeTime } from '../utils/date'
 
 export default {
   props: {
@@ -66,7 +66,7 @@ export default {
       likes,
       comments,
       handleClick,
-      formatDate
+      formatRelativeTime
     }
   }
 }
@@ -81,7 +81,7 @@ export default {
         <el-icon><List /></el-icon>
         <span class="category-name">{{ categoryName }}</span>
         <i class="el-icon-time icon-style"></i>
-        <span class="created-time">{{ formatDate(createdTime) }}</span>
+        <span class="created-time">{{ formatRelativeTime(createdTime) }}</span>
       </div>
     </div>
     <!-- 中层显示：标题、概述和描述 -->
