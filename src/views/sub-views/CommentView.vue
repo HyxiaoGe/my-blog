@@ -28,7 +28,6 @@ watch(toRef(props, 'blogId'), async (newBlogId) => {
 // 发表评论
 const comment = ref('')
 const handleCreateComment = async (blogId) => {
-  console.log('发表评论：', blogId, comment.value)
   if (!comment.value) return
   await createComment(blogId, comment.value)
   comment.value = ''
